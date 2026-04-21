@@ -28,7 +28,7 @@ def extraer_nombres(archivo_entrada: str) -> list:
     
     return nombres
 
-def guardar_resultados(lista_nombres: list, nombre_archivo: str = "resultados_nombres.xlsx") -> None:
+def guardar_resultados(lista_nombres: list, nombre_archivo: str = f"reporte_{datetime.now().strftime("%Y%m%d_%H%M%S")}.xlsx") -> None:
     """
     Toma una lista de nombres y la exporta a un archivo Excel (.xlsx)
     incluyendo una marca de tiempo de la extracción.
