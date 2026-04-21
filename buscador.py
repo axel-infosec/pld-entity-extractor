@@ -28,7 +28,7 @@ def extraer_nombres(archivo_entrada: str) -> list:
     
     return nombres
 
-def guardar_resultados(lista_nombres: list, nombre_archivo: str = f"reporte_{datetime.now().strftime("%Y%m%d_%H%M%S")}.xlsx") -> None:
+def guardar_resultados(lista_nombres: list, nombre_archivo: str = None) -> None:
     """
     Toma una lista de nombres y la exporta a un archivo Excel (.xlsx)
     incluyendo una marca de tiempo de la extracción.
@@ -42,6 +42,9 @@ def guardar_resultados(lista_nombres: list, nombre_archivo: str = f"reporte_{dat
     df["Fecha de Extracción"] = datetime.now().strftime("%d/%m/%Y")
     
     # Guardamos a Excel
+    if nombre_archivo is None:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        nombre_archivo = f"reporte_{timestamp}.xlsx"
     df.to_excel(nombre_archivo, index=False)
     print(f"Se han guardado {len(lista_nombres)} nombres en '{nombre_archivo}'.")
 
